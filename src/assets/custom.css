@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.main{
+    margin: auto;
+}
+#todo-input:hover{
+    border: 2px solid rgb(176, 155, 155);
+}
+#todo-input{
+
+width: 28vw;
+height: 7vh;
+border-radius: 10px;
+border: none;
+margin: auto;
+text-align: center;
+margin-top: 10px;
+margin-left: 485px;
+}
+li{
+    list-style: none;
+    margin-left: 500px;
+    margin-top: 5px;
+    width: 15vw;
+}
+.add-btn{
+    margin-left: 650px;
+    margin-top: 5px;
+}
+#delete{
+
+}
+#edit{
+margin-left: 5px;
+}

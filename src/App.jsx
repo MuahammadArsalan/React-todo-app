@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css';
-
+import Counter from './Counter.jsx';
 
 
 
@@ -177,21 +177,32 @@ function App(){
   let [todo,setTodo] = useState([]);
   let todoValue = useRef()
 
-//Add todo ka function h..
-
+  //Add todo ka function h..
+  
   let addTodo = (e)=>{
-e.preventDefault(),
-// console.log(todoValue.current.value),
+    e.preventDefault()
+    let todoInputVal = todoValue.current.value;
 
-todo.push(todoValue.current.value)
-// console.log(todo);
-setTodo([...todo]);
+    if(todoInputVal === ''){
+      alert('Enter todo')
+    }else{
 
-console.log(todo);
-
-todoValue.current.value = ''
-}
-
+      // console.log(todoValue.current.value),
+      console.log(todoInputVal);
+      
+      
+      
+      todo.push(todoInputVal)
+      // console.log(todo);
+      setTodo([...todo]);
+      
+      console.log(todo);
+      
+      
+    }
+    todoValue.current.value = ''
+    }
+    
 // Delete todo ka function h 
 
 let deleteTodo=(index)=>{
@@ -216,35 +227,36 @@ let editTodo=(index)=>{
 
 return(
 <> 
+{/* <Counter/> */}
 <h1 className='text-center mt-2'>Todo App</h1>
-
 <form>
 
-<input type="text" placeholder='Enter todo' ref={todoValue} className='ml-4'  id='todo-input'  required/><br />
+<input type="text" placeholder='Enter todo' ref={todoValue} className='ml-4'  id='todo-input'  required ="required"/><br />
 <button onClick={addTodo} id='addTodo-btn' className='btn btn-primary mt-3 add-btn'>Add todo</button>
 </form>
 
+
+
 <ul>
-  {todo.map((item,index)=>{
+  {todo.length >0 ? todo.map((item,index)=>{
 
 
 return(
-<>
+<div key={index} >
 
 <li className='mt-2'>{item}
   
-<button  className='btn btn-danger' onClick={()=>{deleteTodo(index)}} id='delete'>Delete</button>   <button id='edit' className='btn btn-success' onClick={()=>{editTodo(index)}}>Edit</button>
-  
-</li>
+  <button  className='btn btn-danger' onClick={()=>{deleteTodo(index)}} id='delete'>Delete</button>   <button id='edit' className='btn btn-success' onClick={()=>{editTodo(index)}}>Edit</button>
+    
+  </li>
 
 
-
-</>
+</div>
   
   
   )
   
-  })}
+  }): <h2 className='text-center mt-5 font-bold'>No Items found</h2>}
 </ul>
 
 
